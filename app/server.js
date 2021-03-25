@@ -7,12 +7,12 @@ var app = express();
 app.use(express.static('public'));
 
 app.get('/callback', (req, res)=>{
-    fs.readFile('test.json', function(err, content){
+    fs.readFile('test.json', (err, content)=>{
         console.log(content);
-        res.json(JSON.parse(content));
-    });
+        res.json(content);
+    })
 
-    console.log('Autre chose encore');
+    console.log('Autre façon de faire encore');
 })
 app.get('/users', function (req, res) {
     var users = [
