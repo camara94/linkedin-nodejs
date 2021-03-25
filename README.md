@@ -1,0 +1,3 @@
+# Node JS
+
+Dans cette formation de Julien Moulin, les utilisateurs de Node.js vont pouvoir modulariser leurs codes. En effet, au travers différents sujets tels que le routing, le templating mais aussi l'accès aux bases de données, vous passerez en revue les techniques les plus intéressantes pour rendre votre application mieux structurée et plus simple à faire évoluer. Les callbacks et les promises n'auront plus de secret pour vous, et pour mieux gérer vos données, vous utiliserez Mongoose. Enfin, pour terminer en beauté, vous parlerez du debug et des outils existants avec Node.js. Avec cette formation, vous serez en mesure de profiter au mieux du potentiel de Node.js.
