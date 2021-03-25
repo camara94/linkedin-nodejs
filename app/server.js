@@ -1,21 +1,14 @@
 var path = require('path');
-var express = require('express');
-var Promis = require('bluebird');
+express = require('express');
+Promis = require('bluebird');
+
+logLib = require('./lib/log');
 fs = Promis.promisifyAll(require('fs'));
 
-var app = express();
+app = express();
 
-app.use(express.static('public'));
-
-app.get('/callback', (req, res)=>{
-    fs.readFileAsync('test.json').then((content)=>{
-        console.log(content);
-        res.json(content);
-    })
-
-    console.log('Autre façon de faire encore');
-})
-app.get('/users', function (req, res) {
+require('./routing/callback.js');
+app.get('/users', (req, res) => {
     var users = [
         {
             "id":"0",
@@ -50,7 +43,7 @@ app.get('/users/1', function (req, res) {
     var user =
         {
             "id":"1",
-            "name":"Valentino",
+            "name":"Valentino/7841",
             "lastname":"Anna",
             "age":"23",
             "job":"Secretary",
