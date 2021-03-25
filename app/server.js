@@ -1,13 +1,14 @@
 var path = require('path');
 var express = require('express');
-fs = require('fs');
+var Promis = require('bluebird');
+fs = Promis.promisifyAll(require('fs'));
 
 var app = express();
 
 app.use(express.static('public'));
 
 app.get('/callback', (req, res)=>{
-    fs.readFile('test.json', (err, content)=>{
+    fs.readFileAsync('test.json').then((content)=>{
         console.log(content);
         res.json(content);
     })
