@@ -1,10 +1,19 @@
 var path = require('path');
 var express = require('express');
+fs = require('fs');
 
 var app = express();
 
 app.use(express.static('public'));
 
+app.get('/callback', (req, res)=>{
+    fs.readFile('test.json', function(err, content){
+        console.log(content);
+        res.json(JSON.parse(content));
+    });
+
+    console.log('Autre chose encore');
+})
 app.get('/users', function (req, res) {
     var users = [
         {
