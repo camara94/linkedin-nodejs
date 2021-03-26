@@ -31,24 +31,29 @@ exports.createUser = (req, res) => {
 }
 
 exports.userUpdate = (req, res) => {
-
     let retourJSON = obj => res.json(obj);
-
     let option = {_id: req.body._id};
-
     printObj = models
                      .User
                      .findOneAsync(req.body)
                      .then( obj => retourJSON( obj ) );
-
     delete req.body['_id'];
-
     models
           .User
           .findOneAndUpdate(option, req.body)
           .then( printObj => retourJSON(printObj) )
           .then( obj => logLib.logContent(obj) )
+}
 
-    //console.log(req.body)
+exports.deleteUser = (req, res) => {
+    let option = { _id: req.params._id };
+    let retourJSON = () => res.json({message: 'All most was done !'});
+    let retourJSONErr = () => res.status(500).json({message: 'Problem with your resquest'});
+
+    models
+          .User
+          .findOneAndDeleteAsync(option)
+          .catch( (msg) => logLib.logContent(msg) ) 
+          .done(retourJSON, retourJSONErr);
 
 }
