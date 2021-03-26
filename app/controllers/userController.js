@@ -21,3 +21,12 @@ exports.userOne =  (req, res) => {
           .then((obj)=> logLib.logContent(obj))
           .then((obj)=>retourJSON(obj))
 }
+
+exports.createUser = (req, res) => {
+    newUser = req.body;
+    models
+          .User(newUser)
+          .saveAsync()
+          .then( (obj) => logLib.logContent(obj) )
+    //console.log(newUser);
+}
