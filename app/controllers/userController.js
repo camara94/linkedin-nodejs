@@ -4,6 +4,7 @@ exports.users = (req, res) => {
           .User
           .find()
           .sort({name:1})
+          .select('name lastname age -_id')
           .limit(2)
           .execAsync()
           .then( obj => logLib.logContent(obj) )
